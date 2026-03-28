@@ -5,5 +5,5 @@ The calculator handles all bad inputs like dividing by zero, typing letters wher
 Type help at any time to see usage guidance, and type quit to exit cleanly from anywhere in the program.
 
 ### To run it:
-- bashcd thecodecrafterthon-day1
+- cd thecodecrafterthon-day1
 - go run main.go
