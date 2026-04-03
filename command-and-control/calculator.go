@@ -28,7 +28,7 @@ func power(a, b int) int {
 	return int(result)
 }
 	
-func runCalculator() {
+func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	history := []string{}

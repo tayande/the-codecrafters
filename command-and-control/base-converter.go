@@ -203,7 +203,7 @@ func hexToDec(hexstr string) (int64, error) {
 	if err != nil {
 		fmt.Println("The input you used is not valid")
 	}
-	return value, nil
+	return value, err
 }
 func binToDec(binstr string) (int64, error) {
 	value, err := strconv.ParseInt(binstr, 2, 64)
@@ -270,7 +270,7 @@ func main() {
 				fmt.Println("Invalid input")
 				continue
 			}
-			if value1 < 2 && value1 > 36 {
+			if base < "2" || base > "36" {
 				fmt.Println("Invalid base")
 				continue
 			}
@@ -298,10 +298,10 @@ func main() {
 			fmt.Println(result)
 
 		case "bin":
-			if base != "2" {
-				fmt.Println("Invalid base for binary conversion")
-				continue
-			}
+			// // if base != "2" {
+			// // 	fmt.Println("Invalid base for binary conversion")
+			// // 	continue
+			// }
 			if !strings.ContainsAny(num, "01")  {
 				fmt.Println("The input you used is invalid for binary conversion")
 				continue
@@ -313,9 +313,9 @@ func main() {
 			}
 			fmt.Println(result)
 
-		// case "exit":
-		// 	fmt.Println("Goodbye...")
-		// 	return
+		case "exit":
+			fmt.Println("Goodbye...")
+			return
 
 		default:
 			fmt.Println("Invalid operation")

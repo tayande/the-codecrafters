@@ -131,24 +131,119 @@ func isPalindrome(sentence string) string {
 	return fmt.Sprintf("✦ \"%s\" is a palindrome!", sentence)
 }
 
-func RunStringConversion() {
+func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
 		fmt.Println("select an operation with their respective values")
-		fmt.Println("upper <text>")
-		fmt.Println("lower <text>")
-		fmt.Println("cap <text>")
-		fmt.Println("title <text>")
-		fmt.Println("snake <text>")
-		fmt.Println("reverse <text>")
+		fmt.Println("upper")
+		fmt.Println("lower")
+		fmt.Println("cap")
+		fmt.Println("title")
+		fmt.Println("snake")
+		fmt.Println("reverse")
 		fmt.Println("'history' | 'last' | 'exit'")
 		fmt.Print("> ")	
 
+		scanner.Scan()
+
+		command := strings.TrimSpace(scanner.Text())
+		command1 := strings.ToLower(command)
+		
+		switch command1 {
+		case "upper":
+			fmt.Println("Enter text")
+
+			scanner.Scan()
+			input := strings.TrimSpace(scanner.Text())
+
+			if input == "" {
+				fmt.Println("You need to enter a text")
+				continue
+			}
+			fmt.Println(upperCase(input))
+
+
+		case "lower":
+			fmt.Println("Enter text")
+
+			scanner.Scan()
+			input := strings.TrimSpace(scanner.Text())
+
+			if input == "" {
+				fmt.Println("You need to enter a text")
+				continue
+			}
+			fmt.Println(lowerCase(input))
+
+		case "cap":
+			fmt.Println("Enter text")
+
+			scanner.Scan()
+			input := strings.TrimSpace(scanner.Text())
+
+			if input == "" {
+				fmt.Println("You need to enter a text")
+				continue
+			}
+			fmt.Println(capitalize(input))
+
+		case "title":
+
+			fmt.Println("Enter text")
+
+			scanner.Scan()
+			input := strings.TrimSpace(scanner.Text())
+
+			if input == "" {
+				fmt.Println("You need to enter a text")
+				continue
+			}
+			fmt.Println(title(input))
+					
+		case "snake":
+
+			fmt.Println("Enter text")
+
+			scanner.Scan()
+			input := strings.TrimSpace(scanner.Text())
+
+			if input == "" {
+				fmt.Println("You need to enter a text")
+				continue
+			}
+			fmt.Println(snake(input))
+
+						
+		case "reverse":
+
+			fmt.Println("Enter text")
+
+			scanner.Scan()
+			input := strings.TrimSpace(scanner.Text())
+
+			if input == "" {
+				fmt.Println("You need to enter a text")
+				continue
+			}
+			fmt.Println(reverse(input))
+
+		case "history":
+
+			showHistory()
+
+		case "last":
+			fmt.Println("comming soon")
+		case "exit":
+			fmt.Println("Goodbye...")
+			return
+		default:
+			fmt.Println("Invalid operation")
+			continue
+
+		}
 		
 	}
-
-	
 
 }

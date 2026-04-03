@@ -27,8 +27,9 @@ func main() {
 		switch choice {
 		case "1":
 			RunCalculator()
+			continue
 		case "2":
-			fmt.Println("Base Converter coming soon...")
+			RunBaseConversion()
 		case "3":
 			fmt.Println("String Transformer coming soon...")
 		case "4":
