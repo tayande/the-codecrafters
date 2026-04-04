@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	//"the-codecrafters/combined-program/calculator"
 )
 
 func main() {
@@ -27,11 +26,10 @@ func main() {
 		switch choice {
 		case "1":
 			RunCalculator()
-			continue
 		case "2":
 			RunBaseConversion()
 		case "3":
-			fmt.Println("String Transformer coming soon...")
+			RunStringConversion()
 		case "4":
 			fmt.Println("Goodbye!")
 			return

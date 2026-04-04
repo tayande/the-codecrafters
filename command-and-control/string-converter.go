@@ -8,34 +8,6 @@ import (
 	"unicode"
 )
 
-type HistoryEntry struct {
-	command string
-	input   string
-	output  string
-}
-
-var history []HistoryEntry
-
-func saveHistory(command, input, output string) {
-	entry := HistoryEntry{command: command, input: input, output: output}
-	history = append(history, entry)
-	if len(history) > 5 {
-		history = history[len(history)-5:]
-	}
-}
-
-func showHistory() {
-	if len(history) == 0 {
-		fmt.Println("No operations yet.")
-		return
-	}
-	fmt.Println("─── Last operations ───")
-	for i, entry := range history {
-		fmt.Printf("%d. [%s] \"%s\" → \"%s\"\n", i+1, entry.command, entry.input, entry.output)
-	}
-	fmt.Println("───────────────────────")
-}
-
 func upperCase(sentence string) string {
 	if len(sentence) == 0 {
 		fmt.Println("Please enter a word or sentence")
@@ -70,7 +42,6 @@ func title(sentence string) string {
 	}
 	words := strings.Fields(sentence)
 	result := []string{}
-
 	for i, word := range words {
 		lowered := strings.ToLower(word)
 		if i == 0 || !smallWords[lowered] {
@@ -125,125 +96,150 @@ func isPalindrome(sentence string) string {
 	runes := []rune(cleaned)
 	for first, last := 0, len(runes)-1; first < last; first, last = first+1, last-1 {
 		if runes[first] != runes[last] {
-			return fmt.Sprintf("✗ \"%s\" is not a palindrome.", sentence)
+			return fmt.Sprintf("\"%s\" is not a palindrome.", sentence)
 		}
 	}
-	return fmt.Sprintf("✦ \"%s\" is a palindrome!", sentence)
+	return fmt.Sprintf("\"%s\" is a palindrome!", sentence)
 }
 
-func main() {
-
+func RunStringConversion() {
 	scanner := bufio.NewScanner(os.Stdin)
+	history := []string{}
 
 	for {
-		fmt.Println("select an operation with their respective values")
-		fmt.Println("upper")
-		fmt.Println("lower")
-		fmt.Println("cap")
-		fmt.Println("title")
-		fmt.Println("snake")
-		fmt.Println("reverse")
+		fmt.Println("select an operation:")
+		fmt.Println("upper | lower | cap | title | snake | reverse | palindrome")
 		fmt.Println("'history' | 'last' | 'exit'")
-		fmt.Print("> ")	
+		fmt.Print("> ")
 
 		scanner.Scan()
-
 		command := strings.TrimSpace(scanner.Text())
 		command1 := strings.ToLower(command)
-		
+
+		if command1 == "history" {
+			if len(history) == 0 {
+				fmt.Println("No operations yet.")
+				continue
+			}
+			fmt.Println("─── Last 5 operations ───")
+			start := len(history) - 5
+			if start < 0 {
+				start = 0
+			}
+			for i, entry := range history[start:] {
+				fmt.Printf("%d. %s", i+1, entry)
+			}
+			continue 
+		}
+
+		if command1 == "last" {
+			if len(history) == 0 {
+				fmt.Println("You have not done any operation yet")
+				continue
+			}
+			fmt.Print("Last: ", history[len(history)-1])
+			continue
+		}
+
+		if command1 == "exit" {
+			fmt.Println("Returning to main menu...")
+			return 
+		}
+
 		switch command1 {
 		case "upper":
 			fmt.Println("Enter text")
-
 			scanner.Scan()
 			input := strings.TrimSpace(scanner.Text())
-
 			if input == "" {
 				fmt.Println("You need to enter a text")
 				continue
 			}
-			fmt.Println(upperCase(input))
-
+			result := upperCase(input)
+			entry := fmt.Sprintf("'%v' <-> uppercase = %v\n", input, result)
+			history = append(history, entry)
+			fmt.Print(entry)
 
 		case "lower":
 			fmt.Println("Enter text")
-
 			scanner.Scan()
 			input := strings.TrimSpace(scanner.Text())
-
 			if input == "" {
 				fmt.Println("You need to enter a text")
 				continue
 			}
-			fmt.Println(lowerCase(input))
+			result := lowerCase(input)
+			entry := fmt.Sprintf("'%v' <-> lowercase = %v\n", input, result)
+			history = append(history, entry)
+			fmt.Print(entry)
 
 		case "cap":
 			fmt.Println("Enter text")
-
 			scanner.Scan()
 			input := strings.TrimSpace(scanner.Text())
-
 			if input == "" {
 				fmt.Println("You need to enter a text")
 				continue
 			}
-			fmt.Println(capitalize(input))
+			result := capitalize(input)
+			entry := fmt.Sprintf("'%v' <-> capitalize = %v\n", input, result)
+			history = append(history, entry)
+			fmt.Print(entry)
 
 		case "title":
-
 			fmt.Println("Enter text")
-
 			scanner.Scan()
 			input := strings.TrimSpace(scanner.Text())
-
 			if input == "" {
 				fmt.Println("You need to enter a text")
 				continue
 			}
-			fmt.Println(title(input))
-					
+			result := title(input)
+			entry := fmt.Sprintf("'%v' <-> title = %v\n", input, result)
+			history = append(history, entry)
+			fmt.Print(entry)
+
 		case "snake":
-
 			fmt.Println("Enter text")
-
 			scanner.Scan()
 			input := strings.TrimSpace(scanner.Text())
-
 			if input == "" {
 				fmt.Println("You need to enter a text")
 				continue
 			}
-			fmt.Println(snake(input))
+			result := snake(input)
+			entry := fmt.Sprintf("'%v' <-> snake = %v\n", input, result)
+			history = append(history, entry)
+			fmt.Print(entry)
 
-						
 		case "reverse":
-
 			fmt.Println("Enter text")
-
 			scanner.Scan()
 			input := strings.TrimSpace(scanner.Text())
-
 			if input == "" {
 				fmt.Println("You need to enter a text")
 				continue
 			}
-			fmt.Println(reverse(input))
+			result := reverse(input)
+			entry := fmt.Sprintf("'%v' <-> reversed = %v\n", input, result)
+			history = append(history, entry)
+			fmt.Print(entry)
 
-		case "history":
+		case "palindrome":
+			fmt.Println("Enter text")
+			scanner.Scan()
+			input := strings.TrimSpace(scanner.Text())
+			if input == "" {
+				fmt.Println("You need to enter a text")
+				continue
+			}
+			result := isPalindrome(input)
+			entry := fmt.Sprintf("'%v' <-> isPalindrome = '%v'\n", input, result)
+			history = append(history, entry)
+			fmt.Print(entry)
 
-			showHistory()
-
-		case "last":
-			fmt.Println("comming soon")
-		case "exit":
-			fmt.Println("Goodbye...")
-			return
 		default:
 			fmt.Println("Invalid operation")
-			continue
-
 		}
-		
 	}
-
 }

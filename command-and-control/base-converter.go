@@ -1,193 +1,3 @@
-// package main
-
-// import (
-// 	"fmt"
-// 	"strconv"
-// 	"strings"
-// )
-// func hexToDec(hexstr string) (int64, error) {
-// 	value, err := strconv.ParseInt(hexstr, 16, 64)
-// 	if err != nil {
-// 		fmt.Println("The input you used is not valid")
-// 	}
-// 	return value, nil
-// }
-// func binToDec(binstr string) (int64, error) {
-// 	value, err := strconv.ParseInt(binstr, 2, 64)
-// 	if err != nil {
-// 		fmt.Println("The input you used is not valid")
-// 	}
-// 	return value, nil
-// }
-
-// func decToAny(num int64, base int) (string, error) {
-
-// 	if base < 2 || base > 36 {
-// 		return "", fmt.Errorf("The input you used is not valid\n")
-// 	}
-// 	 return strconv.FormatInt(num, base), nil
-// }
-// func main() {
-
-// 	fmt.Println("========================================")
-// 	fmt.Println("WELCOME TO THE BEST BASE CONVERTER EVER")
-// 	fmt.Println()
-
-// 	for {
-// 		fmt.Println("Select '1' to continue and 'quit' to exit the program")
-// 		fmt.Print("> ")
-
-// 		var reply string
-// 		fmt.Scan(&reply)
-
-// 		if reply == "quit" {
-// 			fmt.Println("Goodbye!")
-// 			return
-// 		}
-// 		if reply != "1" {
-// 			fmt.Println("Invalid input. please enter '1' to continue or 'quit' to exit")
-// 			fmt.Println()
-// 			continue
-
-// 		}
-// 		for {
-
-// 			fmt.Println()
-// 			fmt.Println("select the operation you want to perform")
-// 			fmt.Println("1. Hexadecimal to decimal")
-// 			fmt.Println("2. Binary to decimal")
-// 			fmt.Println("3. Decimal to both Hexadecimal and Binary")
-// 			fmt.Println("Enter 'quit' to exit and 'back' to return")
-// 			fmt.Print("> ")
-
-// 			var operation string
-// 			fmt.Scan(&operation)
-
-// 			if operation == "quit" {
-// 				fmt.Println("Goodbye!")
-// 				return
-// 			}
-// 			if operation == "back" {
-// 				break
-// 			}
-
-// 			if operation != "1" && operation != "2" && operation != "3" {
-// 				fmt.Println("Invalid operation, please enter '1' or '2' or '3'")
-// 				continue
-// 			}
-
-// 			switch operation {
-// 			case "1":
-// 				var num string
-// 				fmt.Println("Enter the number you want to convert")
-// 				fmt.Scan(&num)
-
-// 				if num == "" {
-// 					fmt.Println("You must input a number")
-// 					continue
-// 				}
-
-// 				num = strings.ToUpper(num)
-// 				if !strings.ContainsAny(num, "0123456789ABCDEF") {
-// 					fmt.Println("Invalid hexadecimal input")
-// 					continue
-// 				}
-
-// 				var base int
-// 				fmt.Println("Enter the base you want to convert from")
-// 				fmt.Print("> ")
-// 				fmt.Scan(&base)
-
-// 				if base != 16 {
-// 					fmt.Println("The base you entered is invalid for hexadecimal conversion")
-// 					continue
-// 				}
-
-// 				if base == 0 {
-// 					fmt.Println("You must enter the base from which you want to convert")
-// 				}
-
-// 				value, err := hexToDec(num)
-// 				if err != nil {
-// 					fmt.Println(err)
-// 					continue
-// 				}
-// 				fmt.Printf("%q converted to decimal is:\n", num)
-// 				fmt.Println(value)
-// 			case "2":
-// 				var num string
-// 				fmt.Println("Enter the number you want to convert")
-// 				fmt.Scan(&num)
-
-// 				if num == "" {
-// 					fmt.Println("You must input a number")
-// 					continue
-// 				}
-// 				if !strings.ContainsAny(num, "01")  {
-// 					fmt.Println("The input you used is not valid for binary conversion")
-// 					continue
-// 				}
-
-// 				var base int
-// 				fmt.Println("Enter the base you want to convert from")
-// 				fmt.Print("> ")
-// 				fmt.Scan(&base)
-
-// 				if base != 2 {
-// 					fmt.Println("The base you entered is invalid for hexadecimal conversion")
-// 					continue
-// 				}
-
-// 				if base == 0 {
-// 					fmt.Println("You must enter the base from which you want to convert")
-// 				}
-
-// 				value, err := binToDec(num)
-// 				if err != nil {
-// 					fmt.Println(err)
-// 					continue
-// 				}
-// 				fmt.Printf("%q converted to decimal is:\n", num)
-// 				fmt.Println(value)
-// 			case "3":
-// 				var a string
-// 				fmt.Println("Enter the decimal number you want to convert")
-// 				fmt.Scan(&a)
-
-// 				if a == "" {
-// 					fmt.Println("You must enter a number")
-// 					continue
-// 				}
-
-// 				num, err := strconv.Atoi(a)
-// 				if err != nil {
-// 					fmt.Println("The input you used is invalid. You must use numbers only")
-// 					continue
-// 				}
-
-// 				var base int
-// 				fmt.Println("Enter the base you want to convert from")
-// 				fmt.Print("> ")
-// 				fmt.Scan(&base)
-
-// 				if base < 2 || base > 36 {
-// 					fmt.Println("The base you entered is not valid")
-// 					continue
-
-// 				}
-
-// 				value, err := decToAny(int64(num), base)
-// 				if err != nil {
-// 					fmt.Println(err)
-// 					continue
-// 				}
-// 				fmt.Printf("%s in base %d is:\n", a, base)
-// 				fmt.Println(value)
-// 			}
-// 		}
-// 	}
-// }
-
 package main
 
 import (
@@ -201,54 +11,72 @@ import (
 func hexToDec(hexstr string) (int64, error) {
 	value, err := strconv.ParseInt(hexstr, 16, 64)
 	if err != nil {
-		fmt.Println("The input you used is not valid")
+		return 0, fmt.Errorf("invalid hex number: %s", hexstr)
 	}
-	return value, err
+	return value, nil
 }
+
 func binToDec(binstr string) (int64, error) {
 	value, err := strconv.ParseInt(binstr, 2, 64)
 	if err != nil {
-		fmt.Println("The input you used is not valid")
+		return 0, fmt.Errorf("invalid binary number: %s", binstr)
 	}
 	return value, nil
 }
 
 func decToAny(num int64, base int) (string, error) {
-
 	if base < 2 || base > 36 {
-		return "", fmt.Errorf("The input you used is not valid\n")
+		return "", fmt.Errorf("base must be between 2 and 36")
 	}
-	 return strconv.FormatInt(num, base), nil
+	return strconv.FormatInt(num, base), nil
 }
 
-func main() {
+func isValidHex(s string) bool {
+	for _, char := range strings.ToUpper(s) {
+		if !strings.ContainsRune("0123456789ABCDEF", char) {
+			return false
+		}
+	}
+	return true
+}
 
+func isValidBin(s string) bool {
+	for _, char := range s {
+		if char != '0' && char != '1' {
+			return false
+		}
+	}
+	return true
+}
+
+func RunBaseConversion() {
 	scanner := bufio.NewScanner(os.Stdin)
 
-
-
 	for {
-
 		fmt.Println("select an operation with their respective values")
-		fmt.Println("base dec <number> ")
-		fmt.Println("base hex <number>")
-		fmt.Println("base bin <number>")
-		fmt.Println("exit")	
-		fmt.Print("> ")	
-		
-		scanner.Scan()
+		fmt.Println("base dec <number> <targetBase>  → decimal to any base")
+		fmt.Println("base hex <hexNumber>             → hex to decimal")
+		fmt.Println("base bin <binaryNumber>          → binary to decimal")
+		fmt.Println("exit")
+		fmt.Print("> ")
 
+		scanner.Scan()
 		broken := strings.TrimSpace(scanner.Text())
-		if broken == "exit" {
-			fmt.Println("Goodbye...")
-			return
+
+		if broken == "" {
+			continue
 		}
-		
-		command := strings.SplitN(broken, " ", 3)
+
+		if broken == "exit" {
+			fmt.Println("Returning to main menu...")
+			return 
+		}
+
+		command := strings.Fields(broken)
 
 		if len(command) < 3 {
-    		fmt.Printf("invalid input\n")
-   			 continue
+			fmt.Println("Invalid input — usage: base <op> <number>")
+			continue
 		}
 
 		base := command[0]
@@ -256,54 +84,54 @@ func main() {
 		num := command[2]
 
 		if base != "base" {
-			fmt.Println("Invalid input")
+			fmt.Println("Command must start with 'base'")
 			continue
 		}
 
-
 		switch op {
-
+		
 		case "dec":
-			value1, err1 := strconv.Atoi(base)
-			value2, err2 := strconv.Atoi(num)
-			if err1 != nil || err2 != nil {
-				fmt.Println("Invalid input")
+			if len(command) < 4 {
+				fmt.Println("Usage: base dec <number> <targetBase>")
 				continue
 			}
-			if base < "2" || base > "36" {
-				fmt.Println("Invalid base")
+			decNum, err := strconv.ParseInt(num, 10, 64)
+			if err != nil {
+				fmt.Println("Invalid decimal number")
 				continue
 			}
-			value, err := decToAny(int64(value2), value1)
+			targetBase, err := strconv.Atoi(command[3])
+			if err != nil {
+				fmt.Println("Invalid base — must be a number")
+				continue
+			}
+			if targetBase < 2 || targetBase > 36 {
+				fmt.Println("Base must be between 2 and 36")
+				continue
+			}
+			value, err := decToAny(decNum, targetBase)
 			if err != nil {
 				fmt.Println(err)
+				continue
 			}
-			fmt.Printf("%s in base %d is:\n", value1, value2)
-			fmt.Println(value)
+			fmt.Printf("%d converted to base %d is: %s\n", decNum, targetBase, value)
 
+		
 		case "hex":
-			if base != "16" {
-				fmt.Println("Invalid base for hexadecimal conversion")
+			if !isValidHex(num) {
+				fmt.Println("Invalid hex number — use only 0-9 and A-F")
 				continue
 			}
-			if !strings.ContainsAny(num, "0123456789ABCDEF") {
-				fmt.Println("Invalid  input")
-				continue
-			}
-			result, err := hexToDec(num)
+			result, err := hexToDec(strings.ToUpper(num))
 			if err != nil {
 				fmt.Println(err)
 				continue
 			}
-			fmt.Println(result)
+			fmt.Printf("%s in hex = %d in decimal\n", num, result)
 
 		case "bin":
-			// // if base != "2" {
-			// // 	fmt.Println("Invalid base for binary conversion")
-			// // 	continue
-			// }
-			if !strings.ContainsAny(num, "01")  {
-				fmt.Println("The input you used is invalid for binary conversion")
+			if !isValidBin(num) {
+				fmt.Println("Invalid binary number — use only 0 and 1")
 				continue
 			}
 			result, err := binToDec(num)
@@ -311,15 +139,10 @@ func main() {
 				fmt.Println(err)
 				continue
 			}
-			fmt.Println(result)
-
-		case "exit":
-			fmt.Println("Goodbye...")
-			return
+			fmt.Printf("%s in binary = %d in decimal\n", num, result)
 
 		default:
-			fmt.Println("Invalid operation")
-			continue
+			fmt.Println("Invalid operation — use dec, hex or bin")
 		}
 	}
 }
