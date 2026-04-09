@@ -1,0 +1,20 @@
+ALERT LEVEL FIVE DETECTED IN NORTHERN SECTOR
+todo: confirm coordinates with Agent Bulus
+classified: target has been relocated to safe house
+-----------------------------------------------
+the perimeter was breached at 03:47 local time
+   extra spaces were not cleaned before logging
+CLASSIFIED: secondary site has been fully compromised
+normal report line with no issues detected
+TODO: send backup units to the eastern checkpoint immediately
+EVERYTHING WAS FINE UNTIL IT SUDDENLY WASN'T
+another normal line coming in from the field agent
+classified: the director has been briefed on the situation
+SHORT LINE
+this is a completely normal line that contains nothing special at all
+this is a very long line that goes on and on past eighty characters and should absolutely be flagged accordingly by the pipeline when it processes it
+ALL CAPS LINE THAT SHOULD BECOME TITLE CASE WHEN PROCESSED
+just a simple lowercase line that will be converted to uppercase by the pipeline
+   
+TODO: update the mission briefing with latest intelligence gathered from the field
+MISSION STATUS CONFIRMED AT HIGHEST LEVEL OF PRIORITY

@@ -1,0 +1,27 @@
+SENTINEL FIELD REPORT — PROCESSED
+═══════════════════════════════════
+001. Alert Level Five Detected In Northern Sector
+002. todo: confirm coordinates with Agent Bulus
+003. CLASSIFIED: TARGET HAS BEEN RELOCATED TO SAFE HOUSE
+004. -----------------------------------------------
+005. THE PERIMETER WAS BREACHED AT 03:47 LOCAL TIME
+006. EXTRA SPACES WERE NOT CLEANED BEFORE LOGGING
+007. [REDACTED]: secondary site has been fully compromised
+008. NORMAL REPORT LINE WITH NO ISSUES DETECTED
+009. ✦ ACTION: send backup units to the eastern checkpoint immediately
+010. Everything Was Fine Until It Suddenly Wasn'T
+011. ANOTHER NORMAL LINE COMING IN FROM THE FIELD AGENT
+012. CLASSIFIED: THE DIRECTOR HAS BEEN BRIEFED ON THE SITUATION
+013. Short Line
+014. THIS IS A COMPLETELY NORMAL LINE THAT CONTAINS NOTHING SPECIAL AT ALL
+015. this is a very long line that goes on and on past eighty characters and should absolutely be flagged accordingly by the pipeline when it processes it [TRUNCATED]
+016. All Caps Line That Should Become Title Case When Processed
+017. JUST A SIMPLE LOWERCASE LINE THAT WILL BE CONVERTED TO UPPERCASE BY THE PIPELINE
+018. ✦ ACTION: update the mission briefing with latest intelligence gathered from the field [TRUNCATED]
+019. Mission Status Confirmed At Highest Level Of Priority
+═══════════════════════════════════
+SUMMARY
+Lines read    : 20
+Lines written : 19
+Lines removed : 1
+Rules applied : Trim, RemoveBlanks, ReplaceTodo, ReplaceClassified, FlagLong, CapsToTitle, LowerToUpper
